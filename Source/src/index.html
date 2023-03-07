@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta Cache-Control='no-store'>
+		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" href="main.css"/>
+		<title>Hunt Showdown Weapons Sound Quiz!</title>
+		<script src="/main.js" defer></script>
+	</head>
+
+	<body>
+		<script src="/quiz_script.js"></script>
+		<!--<script src="test.js"></script>-->
+		<div id="MainWindow">
+			<div class="Question">Оружие из каких категорий будет включено?</div>
+			<form id="CategoriesSelect"></form>
+			<button id="StartQuizButton" onclick="startQuiz()">Начать!</button>
+			<div id="Settings">
+				<div id="OptionsList">
+					<div>
+						<label for="Option_HideDistance">Скрывать дистанцию и требовать её в ответах</label>
+						<input type="checkbox" id="Option_HideDistance">
+					</div>
+				</div>
+				<div id="DifficultySelect">
+					<label for="DifficultySelect">Выбор количества раундов:</label>
+					<select>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="20">20</option>
+					</select>
+				</div>
+			</div>
+			<button id="AboutButton" onclick="loadAboutMenu()">Справка</button>
+		</div>
+		<div id="QuizMenu" style="display: none;">
+			<div id="RoundLabel" number="1">Раунд 1</div>
+			<div id="LastResult" style="display: none;"></div>
+			<div id="WeaponSelect">
+				<div class="Question">Из какого оружия был сделан выстрел?<br><text></text></div>
+				<audio id="WeaponSound" controls></audio>
+				<input id="SearchInput" type="text" placeholder="Поиск..." onkeyup="document.getElementById('SearchFilter').innerHTML = SearchWithStyle(this.value)">
+				<div id="WeaponsVariant"></div>
+				<input id="DistanceVariant" type="text" placeholder="Расстояние..." style="display: none;">
+				<button id="ConfirmAnswer" onclick="generateRound(Number(document.getElementById('RoundLabel').getAttribute('number')), true)">Дальше</button>
+			</div>
+			<style id="SearchFilter"></style>
+		</div>
+		<div id="ResultMenu" style="display: none;">
+			<div id="ResultScreen"></div>
+			<button id="AcceptResult" onclick="document.getElementById('MainWindow').innerHTML = window['SavedMainMenu']">Закончить</button>
+		</div>
+		<div id="AboutMenu" style="display: none;">
+			<div id="FAQ">
+				<div class="AboutQuestion">[1] Как добавлять новые звуки оружия?</div>
+				<div class="AboutAnswer">В папке "Sounds" есть категории, а в них папки с названиями оружий. Внутри папки с оружием хранятся файлы в формате "[*РАСТОЯНИЕ*m]" (без кавычек), где *РАСТОЯНИЕ* — число, указывающее дистанцию до выстрела.</div>
+				<div class="AboutAnswer">Например, положив файл "[20m].mp3" (или .wav) в папку Bow, будет добавлен звук для Bow с дистанции 20 метров. Обрати внимание, что файлы вне формата игнорируются. Также учти, что "m" должна быть английской, а не русской.</div>
+				<div class="AboutQuestion">[2] Как добавлять новое оружие в категорию?</div>
+				<div class="AboutAnswer">Достаточно просто создать внутри папки с категорией подпапку с необходимым названием. Например создав папку "Bow" в папке "Silent" — в категории Silent появится оружие Bow.</div>
+				<div class="AboutQuestion">[3] Как добавлять новые категории?</div>
+				<div class="AboutAnswer">Достаточно просто создать внутри папки "Sounds" подпапку с необходимым названием. Например создав папку "Rifles" в папке "Sounds" — появится категория Rifles.</div>
+				<div class="AboutQuestion">[4] Как включить режим отладки?</div>
+				<div class="AboutAnswer">Консоль разработчика доступна по сочетанию клавиш Ctrl+Shift+I.</div>
+				<div class="AboutQuestion">[5] Почему есть этот вопрос?</div>
+				<div class="AboutAnswer">Мне не хотелось прерывать FAQ на четырёх ответах; хотелось число кратное пяти.</div>
+			</div>
+			<button id="BackFromFAQ" onclick="document.getElementById('MainWindow').innerHTML = window['SavedMainMenu']">Вернуться</button>
+		</div>
+		<script defer>
+			let menu_about = document.getElementById("AboutMenu");
+			window["SavedAboutMenu"] = menu_about.innerHTML;
+			menu_about.remove();
+
+			let menu_quiz = document.getElementById("QuizMenu");
+			window["SavedQuizMenu"] = menu_quiz.innerHTML;
+			menu_quiz.remove();
+
+			let menu_result = document.getElementById("ResultMenu");
+			window["SavedResultMenu"] = menu_result.innerHTML;
+			menu_result.remove();
+		</script>
+	</body>
+</html>

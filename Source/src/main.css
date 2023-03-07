@@ -1,0 +1,111 @@
+html, body {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#MainWindow {
+	position: relative;
+	min-width: 100%;
+	min-height: 100%;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	background-color: gray;
+	color: white;
+}
+
+#CategoriesSelect, #WeaponsVariant, #FAQ, #DistanceVariant, #Settings, #SearchInput, #WeaponSound, #StartQuizButton, #ConfirmAnswer {
+	align-self: center;
+	text-align: left;
+	min-width: 70%;
+}
+
+#FAQ {
+	overflow: auto;
+	width: 90%;
+	height: 90%;
+}
+
+#BackFromFAQ {
+	width: 90%;
+	align-self: center;
+}
+
+#CategoriesSelect, #WeaponsVariant, #ResultScreen {
+	overflow: auto;
+	height: 250px;
+	background-color: black;
+	color: white;
+}
+
+#CategoriesSelect, #WeaponSound, #ResultScreen {
+	border-radius: 10px 10px 0px 0px;
+}
+
+#StartQuizButton, #ConfirmAnswer, #AcceptResult {
+	border-radius: 0px 0px 10px 10px;
+}
+
+#SearchInput, #DistanceVariant {
+	background-color: #131313;
+	color: white;
+	text-align: center;
+	border-radius: 0px;
+}
+
+#WeaponSelect {
+	display: contents;
+}
+
+#WeaponSound {
+	align-self: center;
+	background-color: white;
+	color: black;
+}
+
+#StartQuizButton, #AboutButton, #StartQuizButton, #ConfirmAnswer {
+	text-align: center;
+	color: black;
+}
+
+#DistanceVariant, #SearchInput {
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#AboutButton {
+	margin-left: auto;
+	margin-right: 10px;
+}
+
+.CorrectAnswer {
+	color: rgb(55, 255, 0);
+	background-color: rgb(26 120 39);
+}
+
+.WrongAnswer {
+	color: rgb(255, 0, 0);
+	background-color: rgb(104 4 4);
+}
+
+.TotalCount, .AboutQuestion {
+	color: yellow;
+}
+
+#RoundLabel {
+	background-color: white;
+	color: black;
+	border-color: black;
+	border-style: double;
+	border-width: 4px 0px 4px 0px;
+}
+
+.Question {
+	text-shadow: -1px -1px 0 purple, 1px -1px 0 purple, -1px 1px 0 purple, 1px 1px 0 purple;
+}
+
+.Question text {
+	text-shadow: none;
+}

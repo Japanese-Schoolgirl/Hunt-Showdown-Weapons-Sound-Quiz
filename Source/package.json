@@ -1,0 +1,17 @@
+{
+	"name": "hunt-showdown-weapons-sound-quiz",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"start": "node src/index.js",
+		"tauri": "tauri"
+	},
+	"dependencies": {
+		"fs": "0.0.1-security",
+		"http": "0.0.1-security"
+	},
+	"devDependencies": {
+		"@tauri-apps/cli": "^1.2.2"
+	}
+}
